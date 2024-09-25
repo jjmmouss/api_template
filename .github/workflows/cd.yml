@@ -33,8 +33,13 @@ jobs:
      # Run Ruff for linting and formatting checks
       - name: Run Ruff
         run: |
-          python3 -m ruff format --check  
-          python3 -m ruff check
+          python -m ruff format --check  
+          python -m ruff check
           
+        continue-on-error: false  # Fail the pipeline if there are issues
+      - name: Run MyPy
+        run: |
+          python -m mypy
+        
         continue-on-error: false  # Fail the pipeline if there are issues
 
