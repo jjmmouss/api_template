@@ -29,17 +29,22 @@ jobs:
           echo "coucou"
           pip install poetry
           poetry install --no-interaction --no-ansi
+      
+      
+      - name: Debug List installed packages
+        run: |
+          poetry show
 
      # Run Ruff for linting and formatting checks
       - name: Run Ruff
         run: |
-          python -m ruff format --check  
-          python -m ruff check
+          poetry run ruff format --check  
+          poetry run ruff check
           
         continue-on-error: false  # Fail the pipeline if there are issues
       - name: Run MyPy
         run: |
-          python -m mypy
+          poetry run mypy .
         
         continue-on-error: false  # Fail the pipeline if there are issues
 
