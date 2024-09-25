@@ -1,13 +1,12 @@
 [tool.poetry]
-name = "backend"
+name = "api_template"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Joachim Moussalli <joachim.moussalli@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pre-commit = "^3.8.0"
 fastapi = "^0.115.0"
 uvicorn = "^0.30.6"
 
@@ -16,6 +15,7 @@ uvicorn = "^0.30.6"
 mypy = "^1.11.2"
 pylint = "^3.3.1"
 ruff = "^0.6.7"
+pre-commit = "^3.8.0"
 
 [build-system]
 requires = ["poetry-core"]
