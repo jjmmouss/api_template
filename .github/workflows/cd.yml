@@ -1,0 +1,42 @@
+name: CI Pipeline for MyPy and Ruff
+
+on:
+  # Trigger the workflow on pull requests and pushes to the main branch
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10.12'  # Specify your Python version
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mypy ruff  # Install MyPy and Ruff
+
+      # Run MyPy for static type checking
+      - name: Run MyPy
+        run: |
+          mypy .
+        continue-on-error: false  # Fail the pipeline if there are errors
+
+      # Run Ruff for linting and formatting checks
+      - name: Run Ruff
+        run: |
+          ruff check . --fix  # `--fix` will format issues if necessary, but the pipeline will fail if there are lint errors
+        continue-on-error: false  # Fail the pipeline if there are issues
+
