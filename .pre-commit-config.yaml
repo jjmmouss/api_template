@@ -1,0 +1,13 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.7.0  # Replace with the latest version if needed
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.5.1  # Replace with the latest version if needed
+    hooks:
+      - id: mypy
+        args:
+          - --ignore-missing-imports  # Prevents errors from external imports
+          - --strict  # Optional: adds strict type checking
