@@ -28,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           echo "coucou"
           pip install poetry
-          poetry install --no-interaction --no-ansis
+          poetry install --no-interaction --no-ansi
 
       # Run MyPy for static type checking
       - name: Run MyPy
